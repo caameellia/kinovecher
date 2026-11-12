@@ -1,0 +1,37 @@
+erDiagram
+    USER ||--o{ USER_MOVIE : "добавляет"
+    MOVIE ||--o{ USER_MOVIE : "входит в список"
+    USER ||--o| VOTE : "голосует"
+    MOVIE ||--o{ VOTE : "получает"
+    USER {
+      int id PK
+      varchar username
+      varchar email UK
+      varchar password_hash
+      varchar auth_key
+      varchar role
+      datetime created_at
+    }
+    MOVIE {
+      int id PK
+      varchar title
+      varchar genre
+      int year
+      decimal rating
+      int duration
+      text description
+      varchar poster
+    }
+    USER_MOVIE {
+      int id PK
+      int user_id FK
+      int movie_id FK
+      varchar status
+      datetime added_at
+    }
+    VOTE {
+      int id PK
+      int user_id FK,UK
+      int movie_id FK
+      datetime voted_at
+    }
